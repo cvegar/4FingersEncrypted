@@ -87,10 +87,7 @@ public class EntelFingerPlugin extends CordovaPlugin {
                     // Si ocurre un error en la encriptación, se lanza una RuntimeException
                     throw new RuntimeException("Encryption failed: " + e.getMessage(), e);
                 }
-
                 // Crear la respuesta en JSON fuera del bloque try-catch
-                try {
-		    
                 JSONObject cordoResponse = new JSONObject();
 		    
                 try {
