@@ -42,8 +42,6 @@ import com.veridiumid.sdk.support.base.VeridiumBaseActivity;
 import com.veridiumid.sdk.support.help.ToastHelper;
 import insolutions.veridium.insolutionsveridiumsdk.ISVeridiumTracker;
 
-import com.android.rsa;
-
 import android.content.res.Resources;
 
 import android.widget.Button;
