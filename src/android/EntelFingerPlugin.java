@@ -76,14 +76,24 @@ public class EntelFingerPlugin extends CordovaPlugin {
 
                 String wsqb64 = (String) data.getExtras().get("base64String");
                 String hand = (String) data.getExtras().get("hand");
-	 	        String img = (String) data.getExtras().get("img");
-				String minutia = (String) data.getExtras().get("minutia");
+	 	String img = (String) data.getExtras().get("img");
+		String minutia = (String) data.getExtras().get("minutia");
+		CryptoUtil.loadKeys();
+ 		String wsqEncrypted;
+                try {
+                    // Solo la encriptación está dentro del bloque try-catch
+                    wsqEncrypted = CryptoUtil.encrypt_(wsqb64);
+                } catch (Exception e) {
+                    // Si ocurre un error en la encriptación, se lanza una RuntimeException
+                    throw new RuntimeException("Encryption failed: " + e.getMessage(), e);
+                }
+
+                // Crear la respuesta en JSON fuera del bloque try-catch
+                try {
+		    
                 JSONObject cordoResponse = new JSONObject();
 		    
                 try {
-		    CryptoUtil.loadKeys();
-                    String wsqEncrypted = CryptoUtil.encrypt_(wsqb64);
-
                     cordoResponse.put("wsq", wsqEncrypted);
                     cordoResponse.put("hand", hand);
                     cordoResponse.put("img", img);
