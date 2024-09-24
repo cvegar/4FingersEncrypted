@@ -78,9 +78,10 @@ public class EntelFingerPlugin extends CordovaPlugin {
                 String hand = (String) data.getExtras().get("hand");
 	 	        String img = (String) data.getExtras().get("img");
 				String minutia = (String) data.getExtras().get("minutia");
-                CryptoUtil.loadKeys();
                 JSONObject cordoResponse = new JSONObject();
+		    
                 try {
+		    CryptoUtil.loadKeys();
                     String wsqEncrypted = CryptoUtil.encrypt_(wsqb64);
 
                     cordoResponse.put("wsq", wsqEncrypted);
